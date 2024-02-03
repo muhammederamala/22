@@ -15,7 +15,6 @@ exports.postLogin = async (req, res, next) => {
       });
     }
 
-    // Compare the plain text password with the hashed password in the database
     const isPasswordValid = await bcrypt.compare(
       password,
       existingUser.password

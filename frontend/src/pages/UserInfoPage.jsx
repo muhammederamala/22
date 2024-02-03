@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+
+import { userActions } from "../redux/store";
 
 function UserInfoPage() {
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [edit, setEdit] = useState(false);
@@ -31,6 +35,7 @@ function UserInfoPage() {
           email: response.data.userInfo.email,
         });
         setLoading(false);
+        dispatch(userActions.setUser(response.data.userInfo.lastName));
       } catch (error) {
         console.error(error);
         setLoading(false);

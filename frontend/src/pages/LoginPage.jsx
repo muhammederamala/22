@@ -22,6 +22,7 @@ function LoginPage() {
         `${process.env.REACT_APP_API_URL}/login`,
         formData
       );
+      localStorage.setItem("Token", response.data.data.token);
       navigate("/");
     } catch (error) {
       console.error("Login error:", error);
